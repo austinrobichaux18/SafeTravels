@@ -57,7 +57,7 @@ export default function LoginScreen({
           >
             <View style={[styles.leftArrow, { marginHorizontal: -11 }]}></View>
             <View style={[styles.middleArrow, { marginTop: -4 }]}>
-              <Text style={styles.text}>Signx Up</Text>
+              <Text style={styles.text}>Sign Up</Text>
             </View>
             <View style={[styles.rightArrow, { marginHorizontal: -11 }]}></View>
           </TouchableOpacity>
