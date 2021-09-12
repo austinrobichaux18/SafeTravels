@@ -19,7 +19,7 @@ import useColorScheme from "../hooks/useColorScheme";
 import LoginScreen from "../screens/LoginScreen";
 import ManageAlertScreen from "../screens/ManageAlert";
 import NotFoundScreen from "../screens/NotFoundScreen";
-import TabOneScreen from "../screens/TabOneScreen";
+import ViewAlertsScreen from "../screens/ViewAlertsScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
 import {
   RootStackParamList,
@@ -113,7 +113,7 @@ function BottomTabNavigator() {
     >
       <BottomTab.Screen
         name="TabOne"
-        component={TabOneScreen}
+        component={ViewAlertsScreen}
         options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
           title: "Alerts",
           tabBarIcon: ({ color }) => (
@@ -127,7 +127,7 @@ function BottomTabNavigator() {
               })}
             >
               <FontAwesome
-                name="info-circle"
+                name="pencil-square-o"
                 size={25}
                 color={Colors[colorScheme].text}
                 style={{ marginRight: 15 }}

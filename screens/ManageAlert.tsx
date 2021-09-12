@@ -1,8 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import { useState } from "react";
-import { Button, Platform, StyleSheet, TextInput } from "react-native";
+import { Button, Platform, StyleSheet } from "react-native";
 import DatePicker from "react-native-date-picker";
+import { TextInput } from "react-native-paper";
 
 import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
