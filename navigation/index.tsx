@@ -17,7 +17,7 @@ import { ColorSchemeName, Pressable } from "react-native";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import LoginScreen from "../screens/LoginScreen";
-import ModalScreen from "../screens/ModalScreen";
+import ManageAlertScreen from "../screens/ManageAlert";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import TabOneScreen from "../screens/TabOneScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
@@ -68,7 +68,28 @@ function RootNavigator() {
         options={{ title: "Oops!" }}
       />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Screen
+          name="ManageAlert"
+          component={ManageAlertScreen}
+          options={({ navigation }) => ({
+            headerTitle: "Manage Alert",
+            headerRight: () => (
+              <Pressable
+                //TODO: Implement saving and post new object to server
+                // onPress={() => navigation.navigate("ManageAlert")}
+                style={({ pressed }) => ({
+                  opacity: pressed ? 0.5 : 1,
+                })}
+              >
+                <FontAwesome
+                  name="save"
+                  size={25}
+                  style={{ marginRight: 15 }}
+                />
+              </Pressable>
+            ),
+          })}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -94,11 +115,13 @@ function BottomTabNavigator() {
         name="TabOne"
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
-          title: "Tab One",
-          tabBarIcon: ({ color }) => <TabBarIcon name="map" color={color} />,
+          title: "Alerts",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="bicycle" color={color} />
+          ),
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate("Modal")}
+              onPress={() => navigation.navigate("ManageAlert")}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}
