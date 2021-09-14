@@ -20,7 +20,7 @@ import LoginScreen from "../screens/LoginScreen";
 import ManageAlertScreen from "../screens/ManageAlert";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import ViewAlertsScreen from "../screens/ViewAlertsScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import ViewContactsScreen from "../screens/ViewContactsScreen";
 import {
   RootStackParamList,
   RootTabParamList,
@@ -138,9 +138,9 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabTwo"
-        component={TabTwoScreen}
+        component={ViewContactsScreen}
         options={{
-          title: "Tab Two",
+          title: "Contacts",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
