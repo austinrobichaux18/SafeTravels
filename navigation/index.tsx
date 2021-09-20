@@ -18,6 +18,7 @@ import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import LoginScreen from "../screens/LoginScreen";
 import ManageAlertScreen from "../screens/ManageAlert";
+import ManageContactScreen from "../screens/ManageContactScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import ViewAlertsScreen from "../screens/ViewAlertsScreen";
 import ViewContactsScreen from "../screens/ViewContactsScreen";
@@ -90,6 +91,28 @@ function RootNavigator() {
             ),
           })}
         />
+        <Stack.Screen
+          name="ManageContact"
+          component={ManageContactScreen}
+          options={({ navigation }) => ({
+            headerTitle: "Manage Contact",
+            headerRight: () => (
+              <Pressable
+                //TODO: Implement saving and post new object to server
+                // onPress={() => navigation.navigate("ManageContact")}
+                style={({ pressed }) => ({
+                  opacity: pressed ? 0.5 : 1,
+                })}
+              >
+                <FontAwesome
+                  name="save"
+                  size={25}
+                  style={{ marginRight: 15 }}
+                />
+              </Pressable>
+            ),
+          })}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -139,10 +162,25 @@ function BottomTabNavigator() {
       <BottomTab.Screen
         name="TabTwo"
         component={ViewContactsScreen}
-        options={{
+        options={({ navigation }: RootTabScreenProps<"TabTwo">) => ({
           title: "Contacts",
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
+          headerRight: () => (
+            <Pressable
+              onPress={() => navigation.navigate("ManageContact")}
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.5 : 1,
+              })}
+            >
+              <FontAwesome
+                name="pencil-square-o"
+                size={25}
+                color={Colors[colorScheme].text}
+                style={{ marginRight: 15 }}
+              />
+            </Pressable>
+          ),
+        })}
       />
     </BottomTab.Navigator>
   );

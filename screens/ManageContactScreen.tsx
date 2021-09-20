@@ -9,17 +9,18 @@ import { TextInput } from "react-native-paper";
 import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
 import Alert from "../Models/Alert";
+import Contact from "../Models/Contact";
 
-export default function ManageAlertScreen() {
-  const [myAlert, setAlert] = React.useState<Alert>(
-    new Alert("", "", new Date())
+export default function ManageContactScreen() {
+  const [myContact, setContact] = React.useState<Contact>(
+    new Contact("", "", "", "", "")
   );
   // const [open, setOpen] = useState<boolean>(false);
   // const [date, setDate] = useState(new Date());
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Manage Alert</Text>
+      <Text style={styles.title}>Manage Contact</Text>
       <View
         style={styles.separator}
         lightColor="#eee"
@@ -27,36 +28,44 @@ export default function ManageAlertScreen() {
       />
       <ScrollView>
         <View>
-          <Text>Title</Text>
+          <Text>First Name</Text>
           <TextInput
-            placeholder="Enter a Title"
+            placeholder="Enter a First Name"
             style={styles.input}
-            onChangeText={(t) => setAlert({ ...myAlert, title: t })}
+            onChangeText={(t) => setContact({ ...myContact, firstName: t })}
           ></TextInput>
         </View>
         <View>
-          <Text>Body</Text>
+          <Text>Last Name</Text>
           <TextInput
-            placeholder="Enter a Body"
+            placeholder="Enter a Last Name"
             style={styles.inputBig}
-            onChangeText={(t) => setAlert({ ...myAlert, body: t })}
+            onChangeText={(t) => setContact({ ...myContact, lastName: t })}
           ></TextInput>
         </View>
         <View>
-          {/* <Button title="Open" onPress={() => setOpen(true)} /> */}
-          {/* <DatePicker
-          modal
-          open={open}
-          onDateChange={() => setDate(date)}
-          date={date}
-          onConfirm={(date) => {
-            setOpen(false);
-            setDate(date);
-          }}
-          onCancel={() => {
-            setOpen(false);
-          }}
-        /> */}
+          <Text>Email</Text>
+          <TextInput
+            placeholder="Enter a Email"
+            style={styles.input}
+            onChangeText={(t) => setContact({ ...myContact, email: t })}
+          ></TextInput>
+        </View>
+        <View>
+          <Text>Phone Number</Text>
+          <TextInput
+            placeholder="Enter a Phone Number"
+            style={styles.input}
+            onChangeText={(t) => setContact({ ...myContact, phoneNumber: t })}
+          ></TextInput>
+        </View>
+        <View>
+          <Text>Relationship</Text>
+          <TextInput
+            placeholder="Enter a Relationship"
+            style={styles.input}
+            onChangeText={(t) => setContact({ ...myContact, relationship: t })}
+          ></TextInput>
         </View>
       </ScrollView>
       {/* Use a light status bar on iOS to account for the black space above the modal */}
